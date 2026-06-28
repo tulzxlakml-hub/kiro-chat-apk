@@ -42,9 +42,13 @@ public class MainActivity extends Activity {
     @Override protected void onCreate(Bundle s) {
         super.onCreate(s);
         prefs = getSharedPreferences("kiro_chat_prefs", MODE_PRIVATE);
-        if (prefs.getString("server_url", "").isEmpty()) { Intent i = new Intent(this, SettingsActivity.class); i.putExtra("first_time", true); startActivity(i); }
         setupUI();
         addBubble("Halo! \uD83D\uDC4B Saya Kiro AI.\nKetik pesanmu untuk mulai!", false);
+        if (prefs.getString("server_url", "").isEmpty()) {
+            Intent i = new Intent(this, SettingsActivity.class);
+            i.putExtra("first_time", true);
+            startActivity(i);
+        }
     }
 
     private void setupUI() {
